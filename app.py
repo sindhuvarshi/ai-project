@@ -1,0 +1,22 @@
+from flask import Flask, render_template, request
+import joblib
+
+app = Flask(__name__)
+
+# Load saved model
+model = joblib.load("model.pkl")
+
+@app.route('/')
+def home():
+    return render_template('index.html')
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    hours = float(request.form['hours'])
+    prediction = model.predict([[hours]])
+    return render_template('index.html', result=round(prediction[0], 2))
+
+if __name__ == "__main__":
+    import os
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
