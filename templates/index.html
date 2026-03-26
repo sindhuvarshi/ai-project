@@ -7,12 +7,23 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #667eea, #764ba2);
+            background: #f4f6f9;
         }
 
+        /* NAVBAR */
+        .navbar {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* MAIN CONTAINER */
         .container {
             width: 350px;
-            margin: 100px auto;
+            margin: 80px auto;
             background: white;
             padding: 30px;
             border-radius: 10px;
@@ -21,14 +32,13 @@
         }
 
         h2 {
-            margin-bottom: 20px;
             color: #333;
         }
 
         input {
             width: 90%;
             padding: 10px;
-            margin: 10px 0;
+            margin: 15px 0;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
@@ -52,17 +62,35 @@
             font-size: 18px;
             color: green;
         }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
     </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<div class="navbar">
+    🤖 AI Marks Predictor
+</div>
+
+<!-- MAIN CARD -->
 <div class="container">
-    <h2>📊 AI Marks Predictor</h2>
+    <h2>Enter Study Hours</h2>
 
     <form action="/predict" method="post">
-        <input type="text" name="hours" placeholder="Enter study hours">
-        <button type="submit">Predict</button>
+        <input type="text" name="hours" placeholder="e.g. 5">
+        <button type="submit">Predict Marks</button>
     </form>
 
     {% if result %}
@@ -70,6 +98,11 @@
             Predicted Marks: {{ result }}
         </div>
     {% endif %}
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    © 2026 AI Project | Built with Flask 🚀
 </div>
 
 </body>
