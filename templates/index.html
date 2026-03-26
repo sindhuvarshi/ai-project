@@ -89,9 +89,12 @@
     <h2>Enter Study Hours</h2>
 
     <form action="/predict" method="post">
-        <input type="text" name="hours" placeholder="e.g. 5">
-        <button type="submit">Predict Marks</button>
-    </form>
+    <input type="text" name="hours" placeholder="Study Hours">
+    <input type="text" name="sleep" placeholder="Sleep Hours">
+    <input type="text" name="previous" placeholder="Previous Marks">
+    
+    <button type="submit">Predict Marks</button>
+</form>
 
     {% if result %}
         <div class="result">
@@ -106,4 +109,4 @@
 </div>
 
 </body>
-</html>
+</html>git add .

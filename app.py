@@ -13,7 +13,11 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     hours = float(request.form['hours'])
-    prediction = model.predict([[hours]])
+    sleep = float(request.form['sleep'])
+    previous = float(request.form['previous'])
+
+    prediction = model.predict([[hours, sleep, previous]])
+
     return render_template('index.html', result=round(prediction[0], 2))
 
 if __name__ == "__main__":
