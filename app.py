@@ -10,7 +10,7 @@ model = joblib.load("model.pkl")
 def home():
     return render_template('index.html')
 
-@@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
         hours = float(request.form['hours'])
