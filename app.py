@@ -10,20 +10,18 @@ model = joblib.load("model.pkl")
 def home():
     return render_template('index.html')
 
-@app.route('/predict', methods=['GET', 'POST'])
+@@app.route('/predict', methods=['GET', 'POST'])
 def predict():
     if request.method == 'POST':
         hours = float(request.form['hours'])
         sleep = float(request.form['sleep'])
         previous = float(request.form['previous'])
-    else:
-        hours = float(request.args.get('hours'))
-        sleep = float(request.args.get('sleep'))
-        previous = float(request.args.get('previous'))
 
-    prediction = model.predict([[hours, sleep, previous]])
+        prediction = model.predict([[hours, sleep, previous]])
 
-    return f"Predicted Marks: {round(prediction[0], 2)}"
+        return render_template('index.html', result=round(prediction[0], 2))
+
+    return render_template('index.html')  # 👈 this line is key
 
 if __name__ == "__main__":
     import os
